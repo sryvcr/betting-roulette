@@ -7,5 +7,6 @@ const roulettesCont = new RoulettesController();
 router.get('/get-all', roulettesCont.get);
 router.post('/:id/open', roulettesCont.openRouletteById);
 router.post('/:id/close', roulettesCont.closeRouletteById);
+router.post('/create-one', roulettesCont.post);
 
 export { router };

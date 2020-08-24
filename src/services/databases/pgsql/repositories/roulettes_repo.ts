@@ -64,6 +64,21 @@ export class RoulettesPSQLRepo {
         }
     }
 
+    async createOne(statusId: number) {
+        try {
+            const result = await this.database.query(
+                `
+                    INSERT INTO roulettes(roulette_status_id)
+                    VALUES (${statusId})
+                    RETURNING *
+                `
+            );
+            return result.rows[0];
+        } catch (error) {
+            throw new StorageError(error.message);
+        }
+    }
+
     async countItems() {
         try {
             const result = await this.database.query(

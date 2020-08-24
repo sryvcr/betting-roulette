@@ -22,6 +22,16 @@ export class RoulettesController {
         }
     }
 
+    async post(req: any, res: any, next: any): Promise<void> {
+        try {
+            const result: any = await rouletesSvc.createOne();
+            res.status(HTTPCodesEnum.CREATED);
+            res.json(new ApiResponse(HTTPCodesEnum.SUCCESSFUL, result));
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async openRouletteById(req: any, res: any, next: any): Promise<void> {
         try {
             let message = "roulette cannot be opened";
