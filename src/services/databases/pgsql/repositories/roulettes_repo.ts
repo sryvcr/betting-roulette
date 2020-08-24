@@ -20,6 +20,7 @@ export class RoulettesPSQLRepo {
                     roulette_status
                 FROM betting_roulette
                 GROUP BY id, roulette_status_id, roulette_status
+                ORDER BY id DESC
                 `
             );
             return result.rows;
