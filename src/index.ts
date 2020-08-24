@@ -13,7 +13,7 @@ async function main() {
     }
 }
 
-const createDBConnection = async () => {
+async function createDBConnection() {
     try {
         const { createConnection } = await import('./services/databases/pgsql/client');
         await createConnection();
@@ -24,7 +24,6 @@ const createDBConnection = async () => {
 
 async function startWebApp() {
     try {
-        /**Express server */
         const { Server } = await import('./services/http_server/server');
         const server = new Server();
         await server.start();
