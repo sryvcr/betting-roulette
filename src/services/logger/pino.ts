@@ -1,9 +1,7 @@
 import pino from 'pino';
 import path from 'path';
 
-const env = process.env.NODE_ENV || 'development';
-
-const LOG_LEVEL = env === 'development' ? 'debug' : 'warn';
+const LOG_LEVEL = process.env.LOG_LEVEL || 'debug';
 
 const NAMESPACE_ROOT = process.env.DEBUG !== undefined ?
     process.env.DEBUG.replace(":*", "") :
