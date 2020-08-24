@@ -2,6 +2,7 @@ import express, { json } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import errorHandler from "../errors/handler/error_handler";
+import { routes } from "../../routes/index";
 import Logger from "../logger/pino";
 
 const HTTP_PORT = process.env.HTTP_PORT || 3000;
@@ -25,7 +26,9 @@ export class Server {
         this.app.use(cors());
     }
 
-    routes() {}
+    routes() {
+        this.app.use(routes);
+    }
 
     initErrorHandler() {
         this.app.use(errorHandler);

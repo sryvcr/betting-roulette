@@ -19,7 +19,7 @@ async function createConnection() {
             password: PSQL_PASSWORD,
             database: PSQL_DATABASE,
         });
-        client.connect();
+        await client.connect();
         client.query('SELECT NOW()', (err: any, res: any) => {
             if(!err) {
                 logger.info(`🆗 connect to db: ${process.env.PSQL_DATABASE}, mode: ${process.env.NODE_ENV}`);
