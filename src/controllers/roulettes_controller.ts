@@ -35,4 +35,15 @@ export class RoulettesController {
             next(error)
         }
     }
+
+    async closeRouletteById(req: any, res: any, next: any): Promise<void> {
+        try {
+            const { id } = req.params
+            const result: any = await rouletesSvc.closeRoulette(id);
+            res.status(HTTPCodesEnum.SUCCESSFUL);
+            res.json(new ApiResponse(HTTPCodesEnum.SUCCESSFUL, result));
+        } catch (error) {
+            next(error)
+        }
+    }
 }

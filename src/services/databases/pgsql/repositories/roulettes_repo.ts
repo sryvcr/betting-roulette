@@ -45,6 +45,25 @@ export class RoulettesPSQLRepo {
         }
     }
 
+    async getBetsByRouletteId(id: number) {
+        try {
+            const result = await this.database.query(
+                `
+                SELECT bet_id,
+                    number,
+                    color,
+                    money,
+                    user_id
+                FROM betting_roulette
+                WHERE id = ${id}
+                `
+            );
+            return result.rows;
+        } catch (error) {
+            throw new StorageError(error.message);
+        }
+    }
+
     async countItems() {
         try {
             const result = await this.database.query(
