@@ -56,4 +56,22 @@ export class RoulettesController {
             next(error)
         }
     }
+
+    async createBet(req: any, res: any, next: any): Promise<void> {
+        try {
+            const { user_id } = req.headers;
+            const { number, color, money, roulette_id } = req.body;
+            const result: any = await rouletesSvc.createBet({
+                number: number,
+                color: color,
+                money: money,
+                userId: user_id,
+                rouletteId: roulette_id,
+            });
+            res.status(HTTPCodesEnum.CREATED);
+            res.json(new ApiResponse(HTTPCodesEnum.SUCCESSFUL, result));
+        } catch (error) {
+            next(error)
+        }
+    }
 }
