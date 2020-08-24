@@ -1,0 +1,43 @@
+{
+  "name": "betting_roulette",
+  "version": "1.0.0",
+  "description": "api for betting roulette",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "compile": "tsc --outDir /build/dist",
+    "dev": "nodemon | pino-pretty",
+    "dev:debug": "nodemon --exec 'node -r ts-node/register --inspect-brk' src/index.ts | pino-pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sryvcr/betting_roulette.git"
+  },
+  "author": "sryvcr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sryvcr/betting_roulette/issues"
+  },
+  "homepage": "https://github.com/sryvcr/betting_roulette#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node": "^14.8.0",
+    "pino": "^6.5.1",
+    "pino-pretty": "^4.1.0",
+    "ts-node": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.7",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.6.0",
+    "@types/pino": "^6.3.0",
+    "nodemon": "^2.0.4",
+    "ts-node-dev": "^1.0.0-pre.60",
+    "typescript": "^4.0.2"
+  }
+}
