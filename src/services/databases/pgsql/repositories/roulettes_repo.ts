@@ -28,6 +28,22 @@ export class RoulettesPSQLRepo {
         }
     }
 
+    async getItemById(id: number) {
+        try {
+            const result = await this.database.query(
+                `
+                SELECT id,
+                    roulette_status_id
+                FROM roulettes
+                WHERE id = ${id}
+                LIMIT 1
+                `
+            );
+            return result.rows[0];
+        } catch (error) {
+            throw new StorageError(error.message);
+        }
+    }
 
     async countItems() {
         try {
@@ -36,6 +52,21 @@ export class RoulettesPSQLRepo {
                 SELECT id
                 FROM betting_roulette
                 GROUP BY id
+                `
+            );
+            return result.rowCount;
+        } catch (error) {
+            throw new StorageError(error.message);
+        }
+    }
+
+    async updateStatus(id: number, status: number) {
+        try {
+            const result = await this.database.query(
+                `
+                UPDATE roulettes
+                SET roulette_status_id = ${status}
+                WHERE id = ${id}
                 `
             );
             return result.rowCount;
