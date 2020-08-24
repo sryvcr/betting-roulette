@@ -5,9 +5,20 @@ const logger = Logger(__filename);
 
 async function main() {
     try {
+        await createDBConnection();
         await startWebApp();
     } catch (error) {
-        logger.error(`main error: ${JSON.stringify(error)}`)
+        logger.error(`main error: ${JSON.stringify(error)}`);
+        logger.error(error);
+    }
+}
+
+const createDBConnection = async () => {
+    try {
+        const { createConnection } = await import('./services/databases/pgsql/client');
+        await createConnection();
+    } catch (err) {
+        throw err;
     }
 }
 
